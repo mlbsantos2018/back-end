@@ -100,12 +100,6 @@ data do nascimento
 		//recebe a diferenca em anos das duas datas (idadeAtual)
 		long idadeAtual = diferencaDias / 360;
 		
-		//verifica se o mês atual ainda não ultrapassou ao mês 
-do nascimento! 
-		if(mesAtual < mesNascimento) {
-			idadeAtual--;
-		}
-		
 		return idadeAtual;
 	}
 	
