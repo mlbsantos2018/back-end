@@ -52,6 +52,7 @@ SimpleDateFormat("dd/MM/yyyy", local);
 		System.out.println("Data de Nascimento: " + 
 sdf.format(this.getData_nascimento()));
 		System.out.println("Altura: " + this.getAltura());
+		System.out.println("Idade: " + calculaIdade());
 	}
 	
 	public long calculaIdade() {
