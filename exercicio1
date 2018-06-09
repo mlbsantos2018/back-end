@@ -1,0 +1,112 @@
+//1° EXERCÍCIO ---------------------------------------------------
+/*
+ Crie uma classe para representar uma pessoa, com os atributos 
+ privados de nome, data de nascimento e altura. Crie os métodos
+ públicos necessários para sets e gets e também um método para
+ imprimir todos dados de uma pessoa. Crie um método para calcular
+ a idade da pessoa.
+ ----------------------------------------------------------------------
+ */
+
+package com.exerciciolncc.entidades;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class Pessoa {
+	
+	private String nome;
+	private Date data_nascimento;
+	private String altura;
+	
+	
+	public Date getData_nascimento() {
+		return data_nascimento;
+	}
+	public void setData_nascimento(Date data_nascimento) {
+		this.data_nascimento = data_nascimento;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getAltura() {
+		return altura;
+	}
+	public void setAltura(String altura) {
+		this.altura = altura;
+	}
+	
+	// metodo para mostrar dados da pessoa
+	public void mostrarDados() { 
+		System.out.println("Nome: " + this.getNome());
+		Date data = new Date();
+		Locale local = new Locale("pt","BR");
+		SimpleDateFormat sdf = new 
+SimpleDateFormat("dd/MM/yyyy", local);
+		System.out.println("Data de Nascimento: " + 
+sdf.format(this.getData_nascimento()));
+		System.out.println("Altura: " + this.getAltura());
+	}
+	
+	public long calculaIdade() {
+		
+		Date dataHoje = new Date();
+		//define o local
+		Locale local = new Locale("pt","BR");
+		//define o formato do date
+		SimpleDateFormat sdf = new 
+SimpleDateFormat("dd/MM/yyyy", local);
+
+		String diaAtual = sdf.format(dataHoje);
+		
+		//recebe o time do dia atual formatado
+		long timeHoje=0;
+		try {
+			timeHoje = sdf.parse(diaAtual).getTime();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//recebe o mes atual
+		long mesAtual = (dataHoje.getMonth()+1);
+		
+		//recebe o mes do nascimento
+		long mesNascimento = 
+(this.getData_nascimento().getMonth()+1);
+		
+		//recebe o time da data de nascimento já formatado
+		long timeNascimento = 
+this.getData_nascimento().getTime();
+		
+		//recebe a diferenca em times da data atual em relação a 
+data do nascimento
+		long diferencaTime = timeHoje - timeNascimento;
+		
+		//define quantos segundos tem um dia
+		long diasSegundos = 24*60*60;
+		
+		//recebe a diferenca em dias da diferenca de "times"
+		long diferencaDias = (diferencaTime / diasSegundos) / 
+1000;
+		
+		//recebe a diferenca em anos das duas datas (idadeAtual)
+		long idadeAtual = diferencaDias / 360;
+		
+		//verifica se o mês atual ainda não ultrapassou ao mês 
+do nascimento! 
+		if(mesAtual < mesNascimento) {
+			idadeAtual--;
+		}
+		
+		return idadeAtual;
+	}
+	
+}
+
