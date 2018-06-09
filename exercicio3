@@ -1,0 +1,62 @@
+
+-----------------------------------------EXERCÍCIO 3-----------------------------------------
+--Faça um Banco de Dados (Postgre ou MySQL) que contém Pessoas (campos da primeira questão).
+--Crie 100 pessoas utilizando dados aleatórios. Retorne as pessoas acima de 30 anos.
+------------------------------------------------------------------------------------------------
+-- SQL PARA CRIAR O BANCO DE DADOS--
+CREATE DATABASE banco_exercicios;
+
+-- SQL PARA SELECIONAR O BANCO A SER USADO --
+USE banco_exercicios;
+
+
+-- SQL PARA CRIAR A TABELA PESSOAS ------
+CREATE TABLE pessoas(
+    id INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    data_nascimento Date NOT NULL,
+    altura VARCHAR(5) NOT NULL,
+    idade INT(20) NOT NULL
+);
+
+
+-- INSERTS DE REGISTROS DE PESSOAS NO BANCO DE DADOS -------
+
+INSERT INTO pessoas (nome,data_nascimento,altura,idade) VALUES ("Geoffrey Baker","06/15/17","1.57","27"),
+("Francis Cline","08/07/17","6.33","68"),("Baker Long","01/22/18","5.93","14"),("Baxter Hunter","03/20/18","6.10","16"),
+("Jamal Mayer","10/11/17","6.69","43"),("Ignatius Glover","01/09/18","8.67","03"),("Benedict Galloway","02/13/18","7.69","76"),
+("Hilel Colon","07/16/17","8.50","74"),("Alec Day","10/07/18","1.51","82"),("Tyrone Donovan","10/14/17","0.25","18"),
+("Wing Gonzalez","11/30/17","8.53","21"),("Denton Lott","10/01/17","1.56","73"),("Jameson Mason","05/22/18","9.44","80"),
+("Ivan Caldwell","05/25/19","6.45","58"),("Timothy Higgins","03/12/19","5.55","95"),("Julian Baxter","08/11/18","4.23","75"),
+("Colin Gonzales","08/29/18","0.35","30"),("Hiram Morris","08/04/18","3.75","91"),("Timothy Chang","02/27/19","9.23","61"),
+("Dexter Tucker","06/08/18","5.64","91"),("Dane Salas","11/11/17","9.59","39"),("Rafael Pratt","10/08/18","1.27","69"),
+("Aladdin Ingram","03/21/19","6.72","13"),("Evan Richmond","09/07/17","0.84","85"),("Ian Horn","12/19/17","8.85","94"),
+("Jesse Harrell","09/21/17","7.68","93"),("Jameson Dillon","06/24/18","7.52","98"),("Melvin Lang","04/17/19","3.41","70"),
+("William Wood","12/04/18","8.89","48"),("Devin Chapman","04/02/19","9.26","15"),("Slade Travis","12/26/18","3.81","05"),
+("Blaze Alvarez","09/22/17","8.40","25"),("Paki Doyle","12/12/17","0.13","08"),("Hayden Holcomb","12/13/18","2.39","40"),
+("Chase Perez","02/28/18","5.09","91"),("Lance Padilla","12/14/18","9.13","49"),("Boris Horne","09/07/17","1.18","44"),
+("Amery Murray","07/13/18","3.63","11"),("Kenyon Alford","01/12/18","3.13","27"),("Travis Vang","09/24/18","9.05","82"),
+("Camden Robbins","04/11/18","2.73","24"),("Ezekiel Bonner","06/13/17","2.90","45"),("Baker Robinson","06/18/18","0.55","95"),
+("Trevor Hubbard","11/12/17","1.81","17"),("Christopher Kramer","08/17/18","6.72","25"),("Brendan Hess","12/02/17","1.85","41"),
+("Logan Rowe","10/14/17","3.58","38"),("Hamish French","03/29/19","2.02","10"),("Craig Good","11/25/17","1.63","50"),
+("Allistair Kelly","08/01/18","3.85","83"),("Alvin Mcclure","12/19/17","2.47","89"),("Kadeem Adams","08/20/18","3.90","22"),
+("Xenos Burton","04/24/19","5.31","07"),("Salvador Merrill","02/09/18","6.34","13"),("Emerson Franks","09/01/17","8.48","87"),
+("Salvador Brock","06/25/18","9.45","74"),("Adam Houston","05/23/19","6.24","56"),("Tyrone Colon","10/20/17","9.12","80"),
+("Zahir Vincent","09/20/17","6.61","76"),("Hunter Ray","01/05/19","9.87","24"),("Clarke Whitfield","08/03/18","9.88","70"),
+("Randall Robles","08/11/18","2.95","48"),("Kyle Parks","11/05/17","2.12","71"),("Thor Woodward","08/28/18","4.85","99"),
+("Baxter Young","09/05/17","6.88","04"),("Cyrus Hendricks","01/21/18","9.83","37"),("Kane Ramos","08/19/18","4.99","17"),
+("Kieran Joseph","01/18/18","5.99","50"),("Donovan Blevins","03/29/18","6.69","62"),("Rooney Foley","10/11/18","2.64","45"),
+("Holmes Cook","07/11/17","2.56","11"),("Zephania Kent","10/20/18","0.49","24"),("Ali Castillo","10/06/17","0.94","94"),
+("Emmanuel Palmer","10/29/17","2.53","30"),("Fritz Foley","02/18/18","4.77","36"),("Harper Donaldson","01/14/19","7.23","81"),
+("Kyle Mccray","11/04/17","6.59","40"),("Jason Pacheco","01/10/18","3.10","28"),("Hyatt Mooney","07/01/18","4.31","51"),
+("Tobias Odom","09/16/17","6.73","23"),("Cade Holden","04/12/18","8.24","51"),("Phillip Robinson","09/04/17","1.04","11"),
+("Merritt Robbins","10/01/18","7.06","36"),("Yasir Gillespie","10/31/17","6.39","99"),("Kermit White","02/22/19","7.60","58"),
+("Trevor Potter","06/19/17","2.86","36"),("Ethan Chambers","02/21/19","7.19","15"),("Ciaran Daniel","11/02/17","8.69","22"),
+("Dexter Nielsen","05/03/18","2.61","17"),("Maxwell Gonzalez","03/31/18","0.92","01"),("Maxwell Marks","09/28/18","0.98","83"),
+("Robert Carr","06/26/18","7.16","80"),("Nasim Hubbard","06/13/17","9.02","66"),("Elmo Singleton","10/05/17","5.03","77"),
+("Zahir Boyd","05/06/18","3.99","01"),("Gareth Mcpherson","02/27/19","8.75","09"),("Paki Fields","01/10/18","2.92","13"),
+("Keefe Glass","04/24/18","6.41","94"),("Elijah Anthony","10/04/17","3.97","10"),("Gannon Emerson","01/07/19","1.90","24");
+
+-- SQL COM A QUERY DE BUSCA QUE SERÁ REALIZADA NA TABELA PESSOAS, PARA REGISTROS COM IDADE SUPERIOR A 30 ANOS --
+SELECT *FROM  pessoas WHERE idade > 30 
+
