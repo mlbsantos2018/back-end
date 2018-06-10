@@ -1,0 +1,83 @@
+<?php
+	/* --------------------------------------------REFERENTE AO ARQUIVO DA CLASSE TELEVISÃO -------------------------------------------
+		EXERCÍCIO 2
+		Crie uma classe Televisao e uma classe ControleRemoto que pode controlar o volume e trocar os canais da televisão. O controle de volume permite: (a) aumentar ou diminuir a potência do volume de som em uma unidade de cada vez; (b) aumentar e diminuir o número do canal em uma unidade ; (c) trocar para um canal indicado; (d) consultar o valor do volume de som e o canal selecionado
+	*/
+
+  class Televisao{
+
+   		private $volume=0;
+	    private $canal=0;
+
+	    public function setCanal($valor){
+	    	$this->canal = $valor;
+	    }
+
+		public function alterarVolume($valor){
+			$this->volume += $valor; 
+		}
+
+		public function alterarCanal($valor){
+			$this->canal += $valor;
+		}
+
+		public function getVolume(){
+			return $this->volume;
+		}
+
+		public function getCanal(){
+			return $this->canal;
+		}
+
+   }
+
+?>
+
+
+
+
+<?php  
+  //--------------------------------------------REFERENTE AO ARQUIVO DA CLASSE CONTROLE REMOTO ----------------------------------------
+  include_once("televisao.php");
+  
+ class ControleRemoto{
+
+ 	private $tv=null;
+
+ 	function __construct()
+ 	{
+ 		$this->tv = new Televisao();
+ 	}
+
+  	public function mudarCanal($canal){
+  		$this->tv->setCanal($canal);
+  	}
+
+  	public function aumentarVolume(){
+  		$this->tv->alterarVolume(+1);
+  	}
+
+  	public function abaixarVolume(){
+  		$this->tv->alterarVolume(-1);
+  	}
+
+  	public function aumentarCanal(){
+  		$this->tv->alterarCanal(+1);
+  	}
+
+  	public function abaixarCanal(){
+  		$this->tv->alterarCanal(-1);
+  	}
+
+  	public function getCanal(){
+  		return $this->tv->getCanal();
+  	}
+
+  	public function getVolume(){
+  		return $this->tv->getVolume();
+  	}
+  	
+  	
+  }
+
+?>
